@@ -1,0 +1,42 @@
+# ---------- Maven ----------
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+
+# ---------- Compilación sin Maven (run.bat / test.bat) ----------
+out/
+out-test/
+sources.txt
+
+# ---------- Dependencias descargadas ----------
+lib/
+
+# ---------- Datos generados en tiempo de ejecución ----------
+/data/
+
+# ---------- IntelliJ IDEA ----------
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# ---------- Eclipse / VS Code / NetBeans ----------
+.classpath
+.project
+.settings/
+bin/
+.vscode/
+nbproject/
+build/
+nbbuild/
+dist/
+
+# ---------- Java compilado ----------
+*.class
+
+# ---------- Sistema ----------
+Thumbs.db
+.DS_Store
+*.log
+*.tmp
