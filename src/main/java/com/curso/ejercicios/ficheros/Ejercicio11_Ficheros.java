@@ -90,7 +90,7 @@ public final class Ejercicio11_Ficheros {
         if (texto == null || texto.isBlank()) {
             return conteo;
         }
-        for (String palabra : texto.toLowerCase().split("[^a-záéíóúñü]+")) {
+        for (String palabra : texto.toLowerCase(java.util.Locale.ROOT).split("[^a-záéíóúñü]+")) {
             if (!palabra.isBlank()) {
                 conteo.merge(palabra, 1, Integer::sum);
             }

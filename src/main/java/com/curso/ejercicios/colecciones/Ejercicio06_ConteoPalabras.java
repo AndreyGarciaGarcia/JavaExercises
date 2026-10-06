@@ -57,7 +57,7 @@ public final class Ejercicio06_ConteoPalabras {
         if (texto == null || texto.isBlank()) {
             return conteo;
         }
-        for (String palabra : texto.toLowerCase().split("[^\\p{L}\\p{N}]+")) {
+        for (String palabra : texto.toLowerCase(java.util.Locale.ROOT).split("[^\\p{L}\\p{N}]+")) {
             if (!palabra.isBlank()) {
                 conteo.merge(palabra, 1, Integer::sum);   // atómico y limpio
             }

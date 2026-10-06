@@ -3,7 +3,7 @@
 [![CI](https://github.com/AndreyGarciaGarcia/JavaExercises/actions/workflows/ci.yml/badge.svg)](https://github.com/AndreyGarciaGarcia/JavaExercises/actions/workflows/ci.yml)
 [![Java](https://img.shields.io/badge/Java-21%20%7C%2025-orange)](https://openjdk.org/projects/jdk/21/)
 [![JUnit](https://img.shields.io/badge/JUnit-5.11-green)](https://junit.org/junit5/)
-[![tests](https://img.shields.io/badge/tests-79%20correctos-brightgreen)](#-cómo-ejecutar)
+[![tests](https://img.shields.io/badge/tests-80%20correctos-brightgreen)](#-cómo-ejecutar)
 
 Proyecto **Maven** con los ejercicios de Java organizados por bloques temáticos.
 Cada ejercicio tiene su `main` y se puede ejecutar de forma independiente.
@@ -53,13 +53,13 @@ JavaExercises/
         │   ├── colecciones/ConteoPalabrasTest.java       (5 tests)
         │   ├── streams/StreamsTest.java                  (5 tests)
         │   ├── retos/MaquinaExpendedoraTest.java         (5 tests)
-        │   ├── fechas/FechasTest.java                    (6 tests)
+        │   ├── fechas/FechasTest.java                    (7 tests)
         │   ├── ficheros/FicherosTest.java                (4 tests)
         │   └── concurrencia/ConcurrenciaTest.java        (5 tests)
         └── resources/
 ```
 
-> **11 clases de test · 79 tests · los 12 ejercicios tienen cobertura**
+> **11 clases de test · 80 tests · los 12 ejercicios tienen cobertura**
 > La CI de GitHub Actions los ejecuta en **Java 21 y 25** en cada push.
 
 **Paquete de ejercicios:** `com.curso.ejercicios`
@@ -84,7 +84,7 @@ JavaExercises/
 | JAR ejecutable | `mvn package` → `java -jar target/java-exercises-1.0.0.jar` |
 
 ### 🧪 Tests
-79 tests en 11 clases, cubriendo los **12 ejercicios**:
+80 tests en 11 clases, cubriendo los **12 ejercicios**:
 `poo` · `arrays` · `streams` · `fundamentos` · `flujo` · `colecciones` ·
 `retos` · `fechas` · `ficheros` · `concurrencia`.
 
@@ -93,7 +93,7 @@ en castellano para que el informe se lea sin traducir.
 
 ### Integración continua
 En cada `push` a `main` (y en cada *pull request*), **GitHub Actions** compila el
-proyecto y ejecuta los 79 tests con **Java 21** y **Java 25**, y sube el informe de
+proyecto y ejecuta los 80 tests con **Java 21** y **Java 25**, y sube el informe de
 surefire como artefacto. Workflow: [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
 ### Con IntelliJ IDEA
@@ -166,4 +166,7 @@ public final class Ejercicio13_MiTema {
 - **Lógica en métodos `static` puros** y el `main` solo orquesta → se pueden testear.
 - **Valida al entrar**, lanza excepciones con mensaje claro y captura en la capa que las entienda.
 - **Un test por comportamiento**, con nombre descriptivo y patrón AAA (Arrange-Act-Assert).
+- **Independiente del locale**: nada de `toLowerCase()` ni formatos de fecha "a pelo";
+  se usa `Locale.ROOT` / `Locale.of(...)`. Así los tests pasan en español **y** en inglés
+  (el entorno por defecto de la CI de Linux).
 - **Encoding UTF-8** en todo (configurado en el `pom.xml` y en los `.bat`).

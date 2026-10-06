@@ -81,9 +81,16 @@ public final class Ejercicio10_FechasYTiempo {
         return candidato;
     }
 
-    /** "15 de junio de 2000" (capitaliza el día de la semana si aparece). */
+    /**
+     * "15 de junio de 2000".
+     *
+     * <p>Se fija el locale español a propósito: si no, en una JVM con locale inglés
+     * (por ejemplo en la CI de Linux) el mes saldría "June".</p>
+     */
     public static String fechaLegible(LocalDate fecha) {
-        String texto = fecha.format(DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy"));
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern(
+                "d 'de' MMMM 'de' yyyy", java.util.Locale.of("es", "ES"));
+        String texto = fecha.format(formato);
         return Character.toUpperCase(texto.charAt(0)) + texto.substring(1);
     }
 

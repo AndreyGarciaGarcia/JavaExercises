@@ -66,7 +66,7 @@ public final class Teclado {
     /** Pregunta sí/no. Repite hasta obtener una respuesta clara. */
     public static boolean siNo(String mensaje) {
         while (true) {
-            String entrada = texto(mensaje + " (s/n): ").toLowerCase();
+            String entrada = texto(mensaje + " (s/n): ").toLowerCase(java.util.Locale.ROOT);
             if (entrada.equals("s") || entrada.equals("si") || entrada.equals("sí") || entrada.equals("y")) {
                 return true;
             }

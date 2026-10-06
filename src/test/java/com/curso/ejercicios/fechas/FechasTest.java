@@ -62,4 +62,19 @@ class FechasTest {
         assertEquals("15 de junio de 2000",
                 Ejercicio10_FechasYTiempo.fechaLegible(LocalDate.of(2000, 6, 15)));
     }
+
+    @Test
+    @DisplayName("No depende del locale de la JVM (regresión: en inglés salía «June»)")
+    void fechaLegibleIndependienteDelLocale() {
+        java.util.Locale original = java.util.Locale.getDefault();
+        try {
+            java.util.Locale.setDefault(java.util.Locale.of("en", "US"));
+            assertEquals("15 de junio de 2000",
+                    Ejercicio10_FechasYTiempo.fechaLegible(LocalDate.of(2000, 6, 15)));
+            assertEquals("1 de enero de 2025",
+                    Ejercicio10_FechasYTiempo.fechaLegible(LocalDate.of(2025, 1, 1)));
+        } finally {
+            java.util.Locale.setDefault(original);   // siempre se restaura
+        }
+    }
 }
