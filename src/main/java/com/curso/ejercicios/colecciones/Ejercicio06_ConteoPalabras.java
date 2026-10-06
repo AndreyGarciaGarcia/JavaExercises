@@ -46,6 +46,9 @@ public final class Ejercicio06_ConteoPalabras {
     /**
      * Cuenta las apariciones de cada palabra (sin distinguir mayúsculas).
      *
+     * <p>Se separa por todo lo que no sea letra o número con soporte Unicode:
+     * así "fácil" cuenta como una palabra y no se parte en "f" + "cil".</p>
+     *
      * @param texto frase de entrada
      * @return mapa palabra → número de apariciones, en orden de primera aparición
      */
@@ -54,7 +57,7 @@ public final class Ejercicio06_ConteoPalabras {
         if (texto == null || texto.isBlank()) {
             return conteo;
         }
-        for (String palabra : texto.toLowerCase().split("\\W+")) {
+        for (String palabra : texto.toLowerCase().split("[^\\p{L}\\p{N}]+")) {
             if (!palabra.isBlank()) {
                 conteo.merge(palabra, 1, Integer::sum);   // atómico y limpio
             }

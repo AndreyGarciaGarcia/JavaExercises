@@ -1,5 +1,10 @@
 # 📚 JavaExercises — Ejercicios de Java
 
+[![CI](https://github.com/AndreyGarciaGarcia/JavaExercises/actions/workflows/ci.yml/badge.svg)](https://github.com/AndreyGarciaGarcia/JavaExercises/actions/workflows/ci.yml)
+[![Java](https://img.shields.io/badge/Java-21%20%7C%2025-orange)](https://openjdk.org/projects/jdk/21/)
+[![JUnit](https://img.shields.io/badge/JUnit-5.11-green)](https://junit.org/junit5/)
+[![tests](https://img.shields.io/badge/tests-79%20correctos-brightgreen)](#-cómo-ejecutar)
+
 Proyecto **Maven** con los ejercicios de Java organizados por bloques temáticos.
 Cada ejercicio tiene su `main` y se puede ejecutar de forma independiente.
 
@@ -40,14 +45,22 @@ JavaExercises/
     │   └── resources/
     └── test
         ├── java/com/curso/ejercicios
-        │   ├── poo/CuentaBancariaTest.java          (7 tests)
-        │   ├── arrays/ArraysYStringsTest.java       (6 tests)
-        │   ├── streams/StreamsTest.java             (5 tests)
-        │   ├── fechas/FechasTest.java               (6 tests)
-        │   ├── ficheros/FicherosTest.java           (4 tests)
-        │   └── retos/MaquinaExpendedoraTest.java    (5 tests)
+        │   ├── fundamentos/SaludoTest.java               (10 tests)
+        │   ├── fundamentos/TiposYConversionesTest.java   (10 tests)
+        │   ├── flujo/FizzBuzzTest.java                   (16 tests)
+        │   ├── arrays/ArraysYStringsTest.java            (6 tests)
+        │   ├── poo/CuentaBancariaTest.java               (7 tests)
+        │   ├── colecciones/ConteoPalabrasTest.java       (5 tests)
+        │   ├── streams/StreamsTest.java                  (5 tests)
+        │   ├── retos/MaquinaExpendedoraTest.java         (5 tests)
+        │   ├── fechas/FechasTest.java                    (6 tests)
+        │   ├── ficheros/FicherosTest.java                (4 tests)
+        │   └── concurrencia/ConcurrenciaTest.java        (5 tests)
         └── resources/
 ```
+
+> **11 clases de test · 79 tests · los 12 ejercicios tienen cobertura**
+> La CI de GitHub Actions los ejecuta en **Java 21 y 25** en cada push.
 
 **Paquete de ejercicios:** `com.curso.ejercicios`
 (ruta: `src/main/java/com/curso/ejercicios/`)
@@ -61,7 +74,7 @@ JavaExercises/
 |---|---|
 | Menú principal | **`run.bat`** |
 | Un ejercicio suelto | `run.bat com.curso.ejercicios.flujo.Ejercicio03_FizzBuzz` |
-| Tests JUnit 5 | **`test.bat`** (requiere `lib/junit-platform-console-standalone.jar`) |
+| Tests JUnit 5 | **`test.bat`** — si falta el JAR de JUnit **lo descarga solo** la primera vez |
 
 ### Con Maven
 | Opción | Comando |
@@ -69,6 +82,19 @@ JavaExercises/
 | Menú principal | `mvn compile exec:java` |
 | Tests | `mvn test` |
 | JAR ejecutable | `mvn package` → `java -jar target/java-exercises-1.0.0.jar` |
+
+### 🧪 Tests
+79 tests en 11 clases, cubriendo los **12 ejercicios**:
+`poo` · `arrays` · `streams` · `fundamentos` · `flujo` · `colecciones` ·
+`retos` · `fechas` · `ficheros` · `concurrencia`.
+
+Cada test sigue el patrón **AAA** (Arrange-Act-Assert) y usa `@DisplayName`
+en castellano para que el informe se lea sin traducir.
+
+### Integración continua
+En cada `push` a `main` (y en cada *pull request*), **GitHub Actions** compila el
+proyecto y ejecuta los 79 tests con **Java 21** y **Java 25**, y sube el informe de
+surefire como artefacto. Workflow: [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
 ### Con IntelliJ IDEA
 `File → Open →` selecciona esta carpeta → botón ▶ del `main` que quieras.

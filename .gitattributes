@@ -1,0 +1,21 @@
+# Normaliza finales de línea: LF en el repo, cada quien usa el suyo al clonar
+*        text=auto eol=lf
+
+# Ficheros que en Windows necesitan CRLF para ejecutarse bien
+*.bat    text eol=crlf
+*.cmd    text eol=crlf
+
+# Código y documentación
+*.java   text
+*.xml    text
+*.md     text
+*.yml    text
+*.yaml   text
+*.properties text
+
+# Binarios: nunca se tocan
+*.pdf    binary
+*.jar    binary
+*.class  binary
+*.png    binary
+*.jpg    binary
