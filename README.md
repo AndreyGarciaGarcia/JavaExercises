@@ -3,7 +3,8 @@
 [![CI](https://github.com/AndreyGarciaGarcia/JavaExercises/actions/workflows/ci.yml/badge.svg)](https://github.com/AndreyGarciaGarcia/JavaExercises/actions/workflows/ci.yml)
 [![Java](https://img.shields.io/badge/Java-21%20%7C%2025-orange)](https://openjdk.org/projects/jdk/21/)
 [![JUnit](https://img.shields.io/badge/JUnit-5.11-green)](https://junit.org/junit5/)
-[![tests](https://img.shields.io/badge/tests-80%20correctos-brightgreen)](#-cómo-ejecutar)
+[![tests](https://img.shields.io/badge/tests-149%20correctos-brightgreen)](#-tests)
+[![license](https://img.shields.io/badge/licencia-MIT-blue)](LICENSE)
 
 Proyecto **Maven** con los ejercicios de Java organizados por bloques temáticos.
 Cada ejercicio tiene su `main` y se puede ejecutar de forma independiente.
@@ -16,21 +17,24 @@ Cada ejercicio tiene su `main` y se puede ejecutar de forma independiente.
 
 ```
 JavaExercises/
-├── pom.xml                      ← Maven: Java 21 + JUnit 5
+├── pom.xml                      ← Maven: Java 21 + JUnit 5 + H2
 ├── run.bat                      ← compilar y ejecutar SIN Maven
-├── test.bat                     ← ejecutar los tests SIN Maven
+├── test.bat                     ← ejecutar los tests SIN Maven (auto-descarga)
+├── LICENSE                      ← MIT
 ├── .gitignore
 ├── README.md
+├── .gitattributes               ← LF en el repo, CRLF solo en .bat
+├── .github/workflows/ci.yml     ← CI: Java 21 + 25 en cada push
 ├── docs/
 │   └── Java-Apuntes-Completos.pdf
-├── lib/                         ← JUnit standalone (descargado, no versionado)
+├── lib/                         ← JUnit y H2 (descargados, no versionados)
 └── src
     ├── main
     │   ├── java/com/curso
     │   │   ├── App.java                 ← menú principal (punto de entrada)
     │   │   ├── util/
     │   │   │   └── Teclado.java          ← lectura por teclado (Scanner envuelto)
-    │   │   └── ejercicios/               ← ⬅ PACKAGE DE EJERCICIOS
+    │   │   └── ejercicios/               ← ⬅ PACKAGE DE EJERCICIOS (20 ejercicios)
     │   │       ├── fundamentos/    01 Saludo · 02 Tipos y conversiones
     │   │       ├── flujo/          03 FizzBuzz (if, for, switch)
     │   │       ├── arrays/         04 Arrays y String
@@ -38,10 +42,16 @@ JavaExercises/
     │   │       ├── colecciones/    06 Conteo de palabras (Map)
     │   │       ├── streams/        07 Lambdas y Streams
     │   │       ├── excepciones/    08 try/catch y errores propios
-    │   │       ├── retos/          09 RETO · Máquina expendedora
+    │   │       ├── retos/          09 Máquina expendedora · 19 Biblioteca · 20 Ahorcado
     │   │       ├── fechas/         10 java.time
     │   │       ├── ficheros/       11 java.nio (Files/Path)
-    │   │       └── concurrencia/   12 Hilos, ExecutorService, hilos virtuales
+    │   │       ├── concurrencia/   12 Hilos, ExecutorService, hilos virtuales
+    │   │       ├── herencia/       13 extends, interfaces, polimorfismo
+    │   │       ├── enums/          14 enum, record, sealed
+    │   │       ├── genericos/      15 <T> y PECS
+    │   │       ├── patrones/       16 Builder, Strategy, Factory
+    │   │       ├── jdbc/           17 JDBC con H2 en memoria
+    │   │       └── examenes/       18 RETO · Cuestionario autocorregible
     │   └── resources/
     └── test
         ├── java/com/curso/ejercicios
@@ -52,18 +62,53 @@ JavaExercises/
         │   ├── poo/CuentaBancariaTest.java               (7 tests)
         │   ├── colecciones/ConteoPalabrasTest.java       (5 tests)
         │   ├── streams/StreamsTest.java                  (5 tests)
-        │   ├── retos/MaquinaExpendedoraTest.java         (5 tests)
         │   ├── fechas/FechasTest.java                    (7 tests)
         │   ├── ficheros/FicherosTest.java                (4 tests)
-        │   └── concurrencia/ConcurrenciaTest.java        (5 tests)
+        │   ├── concurrencia/ConcurrenciaTest.java        (5 tests)
+        │   ├── herencia/JerarquiaAnimalesTest.java       (7 tests)
+        │   ├── enums/EnumsYRecordsTest.java              (16 tests)
+        │   ├── genericos/GenericosTest.java              (6 tests)
+        │   ├── patrones/PatronesTest.java                (9 tests)
+        │   ├── jdbc/JdbcTest.java                        (6 tests)
+        │   ├── examenes/CuestionarioTest.java            (8 tests)
+        │   └── retos/MaquinaExpendedora/Biblioteca/Ahorcado (5+6+11 tests)
         └── resources/
 ```
 
-> **11 clases de test · 80 tests · los 12 ejercicios tienen cobertura**
+> **19 clases de test · 149 tests · los 20 ejercicios tienen cobertura**
 > La CI de GitHub Actions los ejecuta en **Java 21 y 25** en cada push.
 
 **Paquete de ejercicios:** `com.curso.ejercicios`
 (ruta: `src/main/java/com/curso/ejercicios/`)
+
+---
+
+## 📖 Índice de los 20 ejercicios
+
+| # | Tema | Clase | Paquete |
+|---|---|---|---|
+| 01 | Saludo y primeros pasos | `Ejercicio01_Saludo` | `fundamentos` |
+| 02 | Tipos y conversiones | `Ejercicio02_TiposYConversiones` | `fundamentos` |
+| 03 | Control de flujo (FizzBuzz) | `Ejercicio03_FizzBuzz` | `flujo` |
+| 04 | Arrays y String | `Ejercicio04_ArraysYStrings` | `arrays` |
+| 05 | POO (cuenta bancaria) | `Ejercicio05_CuentaBancaria` | `poo` |
+| 06 | Colecciones (conteo de palabras) | `Ejercicio06_ConteoPalabras` | `colecciones` |
+| 07 | Lambdas y Streams | `Ejercicio07_Streams` | `streams` |
+| 08 | Excepciones | `Ejercicio08_Excepciones` | `excepciones` |
+| 09 | 🏆 Máquina expendedora | `Ejercicio09_MaquinaExpendedora` | `retos` |
+| 10 | Fecha y hora | `Ejercicio10_FechasYTiempo` | `fechas` |
+| 11 | Ficheros | `Ejercicio11_Ficheros` | `ficheros` |
+| 12 | Concurrencia | `Ejercicio12_Concurrencia` | `concurrencia` |
+| 13 | Herencia y polimorfismo | `Ejercicio13_JerarquiaAnimales` | `herencia` |
+| 14 | Enums, records y sealed | `Ejercicio14_EnumsYRecords` | `enums` |
+| 15 | Genéricos y PECS | `Ejercicio15_Genericos` | `genericos` |
+| 16 | Patrones (Builder/Strategy/Factory) | `Ejercicio16_Patrones` | `patrones` |
+| 17 | JDBC con H2 | `Ejercicio17_Jdbc` | `jdbc` |
+| 18 | 🏆 Cuestionario autocorregible | `Ejercicio18_Cuestionario` | `examenes` |
+| 19 | 🏆 Gestión de biblioteca | `Ejercicio19_GestionBiblioteca` | `retos` |
+| 20 | 🏆 Ahorcado | `Ejercicio20_Ahorcado` | `retos` |
+
+Lanzar cualquiera: `run.bat com.curso.ejercicios.<paquete>.<Clase>` o el menú (`run.bat`).
 
 ---
 
@@ -74,7 +119,7 @@ JavaExercises/
 |---|---|
 | Menú principal | **`run.bat`** |
 | Un ejercicio suelto | `run.bat com.curso.ejercicios.flujo.Ejercicio03_FizzBuzz` |
-| Tests JUnit 5 | **`test.bat`** — si falta el JAR de JUnit **lo descarga solo** la primera vez |
+| Tests JUnit 5 | **`test.bat`** — si faltan los JAR de `lib/` **los descarga solo** (JUnit y H2) |
 
 ### Con Maven
 | Opción | Comando |
@@ -84,16 +129,18 @@ JavaExercises/
 | JAR ejecutable | `mvn package` → `java -jar target/java-exercises-1.0.0.jar` |
 
 ### 🧪 Tests
-80 tests en 11 clases, cubriendo los **12 ejercicios**:
-`poo` · `arrays` · `streams` · `fundamentos` · `flujo` · `colecciones` ·
-`retos` · `fechas` · `ficheros` · `concurrencia`.
+149 tests en 19 clases, cubriendo los **20 ejercicios**:
+`fundamentos` · `flujo` · `arrays` · `poo` · `colecciones` · `streams` ·
+`excepciones` · `retos` · `fechas` · `ficheros` · `concurrencia` ·
+`herencia` · `enums` · `genericos` · `patrones` · `jdbc` · `examenes`.
 
 Cada test sigue el patrón **AAA** (Arrange-Act-Assert) y usa `@DisplayName`
-en castellano para que el informe se lea sin traducir.
+en castellano para que el informe se lea sin traducir. Los del paquete `jdbc`
+se **omiten automáticamente** si no está el driver H2 (`Assumptions`).
 
 ### Integración continua
 En cada `push` a `main` (y en cada *pull request*), **GitHub Actions** compila el
-proyecto y ejecuta los 80 tests con **Java 21** y **Java 25**, y sube el informe de
+proyecto y ejecuta los 149 tests con **Java 21** y **Java 25**, y sube el informe de
 surefire como artefacto. Workflow: [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
 ### Con IntelliJ IDEA
@@ -119,14 +166,14 @@ java -Dstdout.encoding=UTF-8 -cp out com.curso.App
 ## ➕ Cómo añadir un ejercicio nuevo
 
 1. Crea el fichero en el paquete correspondiente:
-   `src/main/java/com/curso/ejercicios/<tema>/Ejercicio13_MiTema.java`
+   `src/main/java/com/curso/ejercicios/<tema>/Ejercicio21_MiTema.java`
 2. Copia esta plantilla:
 
 ```java
 package com.curso.ejercicios.<tema>;
 
 /**
- * EJERCICIO 13 · <Tema> — <Título>
+ * EJERCICIO 21 · <Tema> — <Título>
  *
  * <h2>Enunciado</h2>
  * <ol>
@@ -136,13 +183,13 @@ package com.curso.ejercicios.<tema>;
  * <h2>Conceptos</h2>
  * ...
  */
-public final class Ejercicio13_MiTema {
+public final class Ejercicio21_MiTema {
 
-    private Ejercicio13_MiTema() {
+    private Ejercicio21_MiTema() {
     }
 
     public static void main(String[] args) {
-        System.out.println("\n── Ejercicio 13 · <Título> ──");
+        System.out.println("\n── Ejercicio 21 · <Título> ──");
         // tu código aquí
     }
 
@@ -154,7 +201,7 @@ public final class Ejercicio13_MiTema {
 ```
 
 3. Añádelo al menú de `App.java`:
-   `case 13 -> ejecutar(() -> Ejercicio13_MiTema.main(new String[0]));`
+   `case 21 -> ejecutar(() -> Ejercicio21_MiTema.main(new String[0]));`
 4. (Recomendado) Añade su test en `src/test/java/com/curso/ejercicios/<tema>/`.
 
 ---

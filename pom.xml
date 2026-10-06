@@ -26,6 +26,15 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- H2: BD en memoria para el ejercicio 17 (JDBC). Es 'runtime' porque
+             el código solo usa java.sql y el driver se carga con Class.forName -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.3.232</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>

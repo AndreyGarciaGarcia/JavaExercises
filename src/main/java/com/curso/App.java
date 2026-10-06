@@ -3,14 +3,22 @@ package com.curso;
 import com.curso.ejercicios.arrays.Ejercicio04_ArraysYStrings;
 import com.curso.ejercicios.colecciones.Ejercicio06_ConteoPalabras;
 import com.curso.ejercicios.concurrencia.Ejercicio12_Concurrencia;
+import com.curso.ejercicios.enums.Ejercicio14_EnumsYRecords;
+import com.curso.ejercicios.examenes.Ejercicio18_Cuestionario;
 import com.curso.ejercicios.excepciones.Ejercicio08_Excepciones;
 import com.curso.ejercicios.fechas.Ejercicio10_FechasYTiempo;
 import com.curso.ejercicios.ficheros.Ejercicio11_Ficheros;
 import com.curso.ejercicios.flujo.Ejercicio03_FizzBuzz;
 import com.curso.ejercicios.fundamentos.Ejercicio01_Saludo;
 import com.curso.ejercicios.fundamentos.Ejercicio02_TiposYConversiones;
+import com.curso.ejercicios.genericos.Ejercicio15_Genericos;
+import com.curso.ejercicios.herencia.Ejercicio13_JerarquiaAnimales;
+import com.curso.ejercicios.jdbc.Ejercicio17_Jdbc;
+import com.curso.ejercicios.patrones.Ejercicio16_Patrones;
 import com.curso.ejercicios.poo.Ejercicio05_CuentaBancaria;
 import com.curso.ejercicios.retos.Ejercicio09_MaquinaExpendedora;
+import com.curso.ejercicios.retos.Ejercicio19_GestionBiblioteca;
+import com.curso.ejercicios.retos.Ejercicio20_Ahorcado;
 import com.curso.ejercicios.streams.Ejercicio07_Streams;
 import com.curso.util.Teclado;
 
@@ -53,6 +61,14 @@ public final class App {
                 case 10 -> ejecutar(() -> Ejercicio10_FechasYTiempo.main(new String[0]));
                 case 11 -> ejecutar(() -> Ejercicio11_Ficheros.main(new String[0]));
                 case 12 -> ejecutar(() -> Ejercicio12_Concurrencia.main(new String[0]));
+                case 13 -> ejecutar(() -> Ejercicio13_JerarquiaAnimales.main(new String[0]));
+                case 14 -> ejecutar(() -> Ejercicio14_EnumsYRecords.main(new String[0]));
+                case 15 -> ejecutar(() -> Ejercicio15_Genericos.main(new String[0]));
+                case 16 -> ejecutar(() -> Ejercicio16_Patrones.main(new String[0]));
+                case 17 -> ejecutar(() -> Ejercicio17_Jdbc.main(new String[0]));
+                case 18 -> ejecutar(() -> Ejercicio18_Cuestionario.main(new String[0]));
+                case 19 -> ejecutar(() -> Ejercicio19_GestionBiblioteca.main(new String[0]));
+                case 20 -> ejecutar(() -> Ejercicio20_Ahorcado.main(new String[0]));
                 case 0 -> salir = true;
                 default -> System.out.println("\n  ✗ Opción no válida, prueba otra vez.");
             }
@@ -99,6 +115,15 @@ public final class App {
         System.out.println("  10 · Fecha y hora (java.time)");
         System.out.println("  11 · Ficheros (java.nio)");
         System.out.println("  12 · Concurrencia e hilos virtuales");
+        System.out.println("  ── BLOQUE 4 · AVANZADO Y RETOS ────────────────────────────");
+        System.out.println("  13 · Herencia y polimorfismo");
+        System.out.println("  14 · Enums, records y tipos sellados");
+        System.out.println("  15 · Genéricos y PECS");
+        System.out.println("  16 · Patrones de diseño (Builder/Strategy)");
+        System.out.println("  17 · JDBC con H2 (bases de datos)");
+        System.out.println("  18 · RETO → Cuestionario autocorregible");
+        System.out.println("  19 · RETO → Gestión de biblioteca");
+        System.out.println("  20 · RETO → Ahorcado");
         System.out.println("  0  · Salir");
         System.out.println(SEPARADOR);
     }
